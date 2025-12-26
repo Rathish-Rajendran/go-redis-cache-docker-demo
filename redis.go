@@ -19,15 +19,12 @@ func InitRedisClient() {
 
 	redisClient = redis.NewClient(&redis.Options{
 		Addr:     addr,
-		Password: "", // no password
-		DB:       0,  // use default DB
-		Protocol: 2,
 	})
 
 	_, err := redisClient.Ping(context.Background()).Result()
 	if err != nil {
-		log.Fatalf("❌ Failed to connect to Redis: %v", err)
+		log.Fatalf("Failed to connect to Redis: %v", err)
 	}
 
-	fmt.Println("✅ Connected to Redis at", addr)
+	fmt.Println("Connected to Redis at", addr)
 }
